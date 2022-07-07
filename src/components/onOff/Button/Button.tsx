@@ -3,14 +3,13 @@ import s from './Button.module.css'
 
 type ButtonPropsType = {
     children: string
-    isInclude: boolean
     onClick: () => void
-    style: string
+    style:  any
 }
 const Button = (props: ButtonPropsType) => {
 
     return (
-        <div onClick={() => props.onClick()} className={s[props.style]}>
+        <div onClick={() => props.onClick()} style={props.style} className={s.btn__block}>
             <div className={s.children}>{props.children}</div>
         </div>
     );

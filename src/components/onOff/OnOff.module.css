@@ -3,16 +3,17 @@
 
 }
 
-.circle__red {
+.circle {
     width: 30px;
     height: 30px;
     border-radius: 100px;
+    border: 1px solid black;
+}
+
+.red {
     background-color: red;
 }
 
-.circle__green {
-    width: 30px;
-    height: 30px;
-    border-radius: 100px;
+.green {
     background-color: green;
 }

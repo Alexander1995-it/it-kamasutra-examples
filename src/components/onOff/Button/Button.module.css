@@ -6,30 +6,8 @@
 
 }
 
-.active__red {
-    width: 160px;
-    cursor: pointer;
-    border: 1px solid black;
-    cursor: pointer;
-    background-color: red;
-}
-
-.active__green {
-    width: 160px;
-    cursor: pointer;
-    border: 1px solid black;
-    cursor: pointer;
-    background-color: green;
-}
-
-
 .children {
     font-size: 25px;
     text-align: center;
-
 }
 
-.background {
-    width: 60px;
-    background-color: red;
-}

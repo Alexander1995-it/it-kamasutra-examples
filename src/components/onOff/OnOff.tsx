@@ -3,28 +3,27 @@ import Button from "./Button/Button";
 import s from './OnOff.module.css'
 
 const OnOff = () => {
-    const [isIncludeBtn1, setIsIncludeBtn1] = useState(true)
-    const [isIncludeBtn2, setIsIncludeBtn2] = useState(false)
+    const [isIncludeBtn, setIsIncludeBtn] = useState(false)
 
-    let styleButton1 = isIncludeBtn1 ? 'active__green' : 'btn__block'
-    let styleButton2 = isIncludeBtn2 ? 'active__red' : 'btn__block'
+    let styleButtonOn = {backgroundColor: isIncludeBtn ? 'green' : ''}
+    let styleButtonOff = {backgroundColor: isIncludeBtn ? '' : 'red'}
 
-    const onClickBtnHandler1 = () => {
-        setIsIncludeBtn1(true)
-        setIsIncludeBtn2(false)
+    const onClickBtnHandlerOn = () => {
+        setIsIncludeBtn(true)
+
     }
 
-    const onClickBtnHandler2 = () => {
-        setIsIncludeBtn1(false)
-        setIsIncludeBtn2(true)
+    const onClickBtnHandlerOff = () => {
+        setIsIncludeBtn(false)
+
     }
 
     return (
         <div>
-            <Button style={styleButton1} onClick={onClickBtnHandler1} isInclude={isIncludeBtn1}>On</Button>
-            <Button style={styleButton2} onClick={onClickBtnHandler2} isInclude={isIncludeBtn2}>Off</Button>
+            <Button style={styleButtonOn} onClick={onClickBtnHandlerOn}>On</Button>
+            <Button style={styleButtonOff} onClick={onClickBtnHandlerOff}>Off</Button>
             <div className={s.circle__container}>
-                <div className={isIncludeBtn1 ? s.circle__green : s.circle__red}></div>
+                <div className={s.circle + ' ' + (isIncludeBtn ? s.green : s.red)}></div>
             </div>
         </div>
     )
