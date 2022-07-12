@@ -2,26 +2,31 @@ import React, {useState} from "react";
 
 type AccordionPropsType = {
     titleValue: string
+    accordionCollapsed: boolean
+    onClick: (accordionCollapsed: boolean) => void
 }
-function UncontrolledAccordion(props: AccordionPropsType) {
-    const [collapsed, setCollapsed] = useState(false)
+
+function Accordion(props: AccordionPropsType) {
 
     return (
         <div>
-            <AccordionTitle title={props.titleValue} setCollapsed={setCollapsed} collapsed={collapsed} />
-            {!collapsed && <AccordionBody />}
+            <AccordionTitle title={props.titleValue} accordionCollapsed={props.accordionCollapsed}
+                            onClick={props.onClick}/>
+            {!props.accordionCollapsed && <AccordionBody/>}
         </div>
 
     )
 }
+
 type AccordionTitlePropsType = {
     title: string
-    setCollapsed: any
-    collapsed: boolean
+    accordionCollapsed: boolean
+    onClick: (accordionCollapsed: boolean) => void
 }
+
 function AccordionTitle(props: AccordionTitlePropsType) {
     const onclickCollapsedHandler = () => {
-       props.setCollapsed(!props.collapsed)
+        props.onClick(!props.accordionCollapsed)
     }
     return (
         <h3 onClick={onclickCollapsedHandler}>{props.title}</h3>
@@ -39,4 +44,4 @@ function AccordionBody() {
     )
 }
 
-export default UncontrolledAccordion;
+export default Accordion;

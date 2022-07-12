@@ -1,31 +1,35 @@
 import React, {useState} from "react";
+import {RatingValue} from "../../App";
 
-export function Rating() {
+type RatingPropsType = {
+    value: RatingValue
+    onClick: (value: RatingValue) => void
+}
 
-    const [title, setTitle] = useState(0)
+export function Rating(props: RatingPropsType) {
 
-    const onClickHandler = (id: number) => {
-        setTitle(id)
-    }
+
     return (
         <div style={{display: 'flex'}}>
-            <div onClick={() => onClickHandler(1)}><Star selected={title > 0}/></div>
-            <div onClick={() => onClickHandler(2)}><Star selected={title > 1}/></div>
-            <div onClick={() => onClickHandler(3)}><Star selected={title > 2}/></div>
-            <div onClick={() => onClickHandler(4)}><Star selected={title > 3}/></div>
-            <div onClick={() => onClickHandler(5)}><Star selected={title > 4}/></div>
+            <Star selected={props.value > 0} onClick={props.onClick} value={1}/>
+            <Star selected={props.value > 1} onClick={props.onClick} value={2}/>
+            <Star selected={props.value > 2} onClick={props.onClick} value={3}/>
+            <Star selected={props.value > 3} onClick={props.onClick} value={4}/>
+            <Star selected={props.value > 4} onClick={props.onClick} value={5}/>
         </div>
     )
 }
 
 type StarPropsType = {
     selected: boolean
+    onClick: (value: RatingValue) => void
+    value: RatingValue
 }
 
 function Star(props: StarPropsType) {
 
     return (
-        <div>
+        <div onClick={() => props.onClick(props.value)}>
             {props.selected
                 ? <span><b>Star</b> </span>
                 : <span>Star </span>
